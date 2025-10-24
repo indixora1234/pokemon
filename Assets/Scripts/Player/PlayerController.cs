@@ -4,11 +4,16 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed= 5f ;
     [SerializeField] private LayerMask solidObjectsLayer;
 
     public bool isMoving;
     private Vector2 input;
+    private Animator animator;
+
+    private void Awake(){
+        animator = GetComponent<Animator>();
+    }
 
     private void Update(){
         if (!isMoving)
@@ -20,6 +25,8 @@ public class PlayerController : MonoBehaviour
             if (input.x != 0 ) input.y = 0;
 
             if (input != Vector2.zero){
+                animator.SetFloat("moveX", input.x);
+                animator.SetFloat("moveY", input.y);
                 var targetPos = transform.position;
                 targetPos.x += input.x;
                 targetPos.y += input.y;
@@ -29,6 +36,7 @@ public class PlayerController : MonoBehaviour
                 } 
             }
         }
+        animator.SetBool("isMoving", isMoving);
     }
 
     //Coroutine for smooth, tile-by-tile movement

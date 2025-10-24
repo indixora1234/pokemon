@@ -11,8 +11,8 @@ public class PokemonBase : ScriptableObject
     [TextArea]
     [field: SerializeField] public string description {get ; private set; }
 
-    [field: SerializeField] public string frontSprite {get ; private set; }
-    [field: SerializeField] public string backSprite {get ; private set; }
+    [field: SerializeField] public Sprite frontSprite {get ; private set; }
+    [field: SerializeField] public Sprite backSprite {get ; private set; }
 
     [field: SerializeField] public PokemonType type1 {get ; private set; }
     [field: SerializeField] public PokemonType type2 {get ; private set; }
@@ -25,7 +25,13 @@ public class PokemonBase : ScriptableObject
     [field: SerializeField] public int spDefense {get ; private set; }
     [field: SerializeField] public int speed {get ; private set; }
 
-
+    [field: SerializeField] public List<LearnableMove> learnableMoves {get ; private set; }
+}
+[System.Serializable]
+public class LearnableMove
+{
+    [field: SerializeField] public MoveBase moveBase {get ; private set; }
+    [field: SerializeField] public int level {get ; private set; }
 }
 
 public enum PokemonType
