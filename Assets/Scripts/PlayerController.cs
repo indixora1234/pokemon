@@ -2,9 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerController
+public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    public LayerMask solidObjectsLayer;
 
     public bool isMoving;
     private Vector2 input;
@@ -22,10 +23,13 @@ public class PlayerController
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 
-                StartCoroutine(Move(targetPos));
+                if (IsWalkable(targetPos)){
+                    StartCoroutine(Move(targetPos));
+                } 
             }
         }
     }
+
     IEnumerator Move(Vector3 targetPos){
 
         isMoving = true;
@@ -38,5 +42,14 @@ public class PlayerController
         }
         transform.position = targetPos;
         isMoving = false;
+    }
+
+    //Handles collisions 
+    //(Player doesn't move forward when it's colliding with a solid object)
+    private bool IsWalkable(Vector3 targetPos){
+        if ((Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer)) != null){
+            return false;
+        }
+        return true;
     }
 }
