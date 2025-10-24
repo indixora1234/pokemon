@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
-    public LayerMask solidObjectsLayer;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private LayerMask solidObjectsLayer;
 
     public bool isMoving;
     private Vector2 input;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
             //remove diagonal movement
             if (input.x != 0 ) input.y = 0;
+
             if (input != Vector2.zero){
                 var targetPos = transform.position;
                 targetPos.x += input.x;
@@ -30,7 +31,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Move(Vector3 targetPos){
+    //Coroutine for smooth, tile-by-tile movement
+    IEnumerator Move(Vector3 targetPos) {
 
         isMoving = true;
         //if there's a difference between the current and target position
