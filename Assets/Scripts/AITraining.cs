@@ -1,5 +1,6 @@
 using UnityEngine;
 using Neocortex;
+using System.Collections;
 
 public class AITraining : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class AITraining : MonoBehaviour
         {
             Debug.Log("AI Response Received: " + response.message);
 
-           if (speechBubble != null)
+            if (speechBubble != null)
             {
                 BattleSystem battleSystem = FindFirstObjectByType<BattleSystem>();
 
@@ -52,8 +53,6 @@ public class AITraining : MonoBehaviour
                         speechBubble.ShowSpeech(response.message, player.transform);
                 }
             }
-
-
             
         });
 
@@ -68,6 +67,7 @@ public class AITraining : MonoBehaviour
         });
 
         Debug.Log("AI and CombatTracker successfully initialized. Press T for Text,  V for Voice");
+        StartCoroutine(OverworldDialogueLoop());
         AnalyzeCombatData();        
     }
 
@@ -87,7 +87,7 @@ public class AITraining : MonoBehaviour
         
 
     }
-    
+
     public void AnalyzeCombatData(bool useVoice = false)
     {
         if (combatTracker == null || agent == null) return;
@@ -107,5 +107,48 @@ public class AITraining : MonoBehaviour
         // Here you can implement logic to adjust AI behavior based on the report
         // For example, if the player dodges a lot, the AI could focus on predicting dodges
     }
+
+    private IEnumerator OverworldDialogueLoop()
+    {
+        while (true)
+        {
+            // Wait between 10–20 seconds before each new message
+            yield return new WaitForSeconds(Random.Range(10f, 20f));
+
+            if (agent == null) continue;
+
+            // 🧠 Prompt for overworld chatter
+            string prompt =
+                "You are a friendly Pokémon mentor who gives short, interesting comments to the player " +
+                "while they explore the overworld. " +
+                "Say something motivational, funny, or informative about Pokémon or training. " +
+                "Keep it under 20 words and natural.";
+
+            Debug.Log("🌿 Sending overworld prompt to AI...");
+
+            if (useVoice)
+            {
+                agent.TextToAudio(prompt);
+            }
+            else
+            {
+                agent.TextToText(prompt);
+            }
+        }
+    }
+    
+    public void PauseOverworldDialogue()
+    {
+        StopCoroutine(OverworldDialogueLoop());
+        Debug.Log("🛑 Overworld AI dialogue paused (battle started).");
+    }
+
+    public void ResumeOverworldDialogue()
+    {
+        StartCoroutine(OverworldDialogueLoop());
+        Debug.Log("🌿 Overworld AI dialogue resumed (battle ended).");
+    }
+
+
 
 }

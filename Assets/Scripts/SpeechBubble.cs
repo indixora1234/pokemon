@@ -1,203 +1,110 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class SpeechBubble : MonoBehaviour
 {
-    [Header("UI References")]
-    public TextMeshProUGUI textBox;
-    public Image bubbleImage; // Make sure to assign SpeechBubbleBackground here
+    [Header("UI")]
+    [SerializeField] private RectTransform root;          // SpeechBubbleUI (this)
+    [SerializeField] private TextMeshProUGUI textBox;     // child TMP text
 
     [Header("Targets")]
-    public Transform overworldTarget;  // Player in overworld
-    public Transform battleTarget;     // PlayerUnit during battle
+    [SerializeField] private Transform overworldTarget;   // Player
+    [SerializeField] private Transform battleTarget;      // PlayerUnit
 
     [Header("Settings")]
-    public Vector3 offset = new Vector3(0, 2f, 0);
-    public float textSpeed = 0.03f;
-    public float displayTime = 2f;
+    [SerializeField] private Vector3 worldOffset = new Vector3(0, 2f, 0);
+    [SerializeField] private float typeSpeed = 0.03f;
+    [SerializeField] private float holdSeconds = 2f;
 
-    private Camera mainCamera;
-    private Camera battleCamera;
-    private Coroutine typingCoroutine;
-    private bool isInBattle = false;
+    public bool IsInBattle { get; private set; }
 
-    void Start()
-    {
-        mainCamera = GameObject.Find("Main Camera")?.GetComponent<Camera>();
-        battleCamera = GameObject.Find("BattleCamera")?.GetComponent<Camera>();
-
-        // Ensure both text and bubble start hidden properly
-        if (bubbleImage != null)
-        {
-            bubbleImage.gameObject.SetActive(false);
-            Debug.Log("🧩 Start(): Bubble hidden initially, reference OK: " + bubbleImage.name);
-        }
-
-        if (textBox != null)
-        {
-            textBox.gameObject.SetActive(false);
-            Debug.Log("🧩 Start(): TextBox hidden initially, reference OK: " + textBox.name);
-        }
-    }
-
+    Canvas canvas;
+    Camera mainCam;
+    Camera battleCam;
+    Coroutine typing;
 
     void Awake()
     {
-        if (bubbleImage == null)
-            Debug.LogWarning("❌ bubbleImage is NULL in Awake!");
-        else
-            Debug.Log("✅ bubbleImage assigned: " + bubbleImage.name);
+        // cache refs
+        canvas   = GetComponentInParent<Canvas>();
+        mainCam  = GameObject.Find("Main Camera")   ?.GetComponent<Camera>();
+        battleCam= GameObject.Find("BattleCamera")  ?.GetComponent<Camera>();
+
+        if (!root) root = (RectTransform)transform;
+        if (textBox) textBox.gameObject.SetActive(false);
+        gameObject.SetActive(true); // keep parent active; we’ll just hide the text
     }
 
+    // ---- Public API ----------------------------------------------------------
 
-    /// <summary>
-    /// Switch between overworld and battle mode.
-    /// </summary>
-    public void SetMode(bool battleMode)
+    public void EnterBattle(Transform playerUnit)
     {
-        isInBattle = battleMode;
-
-        var canvas = GetComponentInParent<Canvas>();
-        if (canvas != null)
-        {
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = battleMode ? battleCamera : mainCamera;
-            Debug.Log($"🎥 SpeechBubbleCanvas now using {(battleMode ? battleCamera.name : mainCamera.name)}");
-
-            if (battleMode)
-            {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = battleCamera;
-                Debug.Log("⚔️ Switched SpeechBubbleCanvas to BattleCamera mode.");
-            }
-            else
-            {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = mainCamera;
-                Debug.Log("🌍 Switched SpeechBubbleCanvas to MainCamera mode.");
-            }
-        }
+        IsInBattle = true;
+        if (playerUnit) battleTarget = playerUnit;
     }
 
+    public void ExitBattle(Transform player)
+    {
+        IsInBattle = false;
+        if (player) overworldTarget = player;
+    }
 
-    /// <summary>
-    /// Show speech bubble automatically targeting the active mode's character.
-    /// </summary>
+    /// Show above current mode’s target
     public void ShowSpeech(string message)
     {
-        gameObject.SetActive(true); // ensure parent is reactivated
-        Debug.Log("💬 ShowSpeech (auto-target): " + message);
-        Transform target = isInBattle ? battleTarget : overworldTarget;
-        if (target == null || textBox == null)
-        {
-            Debug.LogWarning("SpeechBubble: Missing target or text box.");
-            return;
-        }
+        var t = IsInBattle ? battleTarget : overworldTarget;
+        if (!t || !textBox) return;
 
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
-
-        typingCoroutine = StartCoroutine(TypeText(message, target));
+        if (typing != null) StopCoroutine(typing);
+        typing = StartCoroutine(TypeRoutine(message, t));
     }
 
-    /// <summary>
-    /// Show speech bubble at a specific world target (used by AITraining.cs).
-    /// </summary>
+    /// Show above a specific target (optional overload)
     public void ShowSpeech(string message, Transform target)
     {
-        gameObject.SetActive(true); // ensure parent is reactivated
+        if (!target || !textBox) return;
 
-        Debug.Log("💬 ShowSpeech (manual target): " + message);
-
-        if (target == null)
-        {
-            Debug.LogWarning("❌ Target is null!");
-            return;
-        }
-
-        if (textBox == null)
-        {
-            Debug.LogWarning("❌ textBox is null!");
-            return;
-        }
-
-        Debug.Log("✅ Passed all null checks, starting TypeText coroutine...");
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
-
-        typingCoroutine = StartCoroutine(TypeText(message, target));
+        if (typing != null) StopCoroutine(typing);
+        typing = StartCoroutine(TypeRoutine(message, target));
     }
 
+    // ---- Internals -----------------------------------------------------------
 
-   private IEnumerator TypeText(string message, Transform target)
+    IEnumerator TypeRoutine(string message, Transform target)
     {
-        Debug.Log("🌀 Entered TypeText coroutine...");
+        textBox.text = "";
+        textBox.gameObject.SetActive(true);
 
-        // make sure both UI elements are visible
-        if (bubbleImage != null)
-        {
-            bubbleImage.gameObject.SetActive(true);
-            Debug.Log("🗨️ Speech bubble enabled: " + bubbleImage.name);
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ bubbleImage is null inside TypeText!");
-        }
-
-        if (textBox != null)
-        {
-            textBox.text = "";
-            textBox.gameObject.SetActive(true);
-        }
-
-        // ✅ Do not wrap yield statements in try/catch
         foreach (char c in message)
         {
-            if (textBox != null)
-                textBox.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            textBox.text += c;
+            yield return new WaitForSeconds(typeSpeed);
         }
 
-        yield return new WaitForSeconds(displayTime);
-
-        if (textBox != null)
-            textBox.gameObject.SetActive(false);
-        if (bubbleImage != null)
-            bubbleImage.gameObject.SetActive(false);
-
-        Debug.Log("💤 Speech bubble hidden after delay.");
+        yield return new WaitForSeconds(holdSeconds);
+        textBox.gameObject.SetActive(false);
     }
 
-
-
-
-
-    void Update()
+    void LateUpdate()
     {
-        Transform target = isInBattle ? battleTarget : overworldTarget;
-        Camera activeCam = isInBattle ? battleCamera : mainCamera;
+        // pick the active cam & target
+        var target = IsInBattle ? battleTarget : overworldTarget;
+        if (!target || !canvas || !root) return;
 
-        if (target == null || activeCam == null || textBox == null || bubbleImage == null)
-            return;
+        var cam = IsInBattle && battleCam ? battleCam : mainCam;
+        Vector3 screen = cam ? cam.WorldToScreenPoint(target.position + worldOffset)
+                             : (Vector3)RectTransformUtility.WorldToScreenPoint(null, target.position + worldOffset);
 
-        // Convert world position to screen point
-        Vector3 screenPos = activeCam.WorldToScreenPoint(target.position + offset);
-
-        // Convert screen point to local position within the canvas
-        RectTransform canvasRect = bubbleImage.canvas.GetComponent<RectTransform>();
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, activeCam, out Vector2 localPos))
+        // convert screen → canvas local (Overlay uses null camera)
+        RectTransform canvasRect = (RectTransform)canvas.transform;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRect,
+                screen,
+                canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam,
+                out Vector2 local))
         {
-            // Apply the position to both text and bubble
-            textBox.rectTransform.anchoredPosition = localPos;
-            bubbleImage.rectTransform.anchoredPosition = localPos;
+            root.anchoredPosition = local;
         }
     }
-
 }
-
-
-
-
-

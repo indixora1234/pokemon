@@ -21,6 +21,7 @@ public class BattleSystem : MonoBehaviour
 
     private void Start(){
         StartCoroutine(SetupBattle());
+        
     }
 
     public IEnumerator SetupBattle(){
@@ -31,19 +32,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared.");
-        // --- TESTING SPEECH BUBBLE ---
-        SpeechBubble speechBubble = FindFirstObjectByType<SpeechBubble>();
-        if (speechBubble != null)
-        {
-            speechBubble.SetMode(true);
-            speechBubble.ShowSpeech("I'm ready to fight!", playerUnit.transform);
-            Debug.Log("✅ Speech bubble triggered in battle setup.");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️No SpeechBubble found in the scene!");
-        }
-        // ------------------------------
 
         yield return new WaitForSeconds(1f);
 

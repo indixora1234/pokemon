@@ -654,13 +654,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a61d4e8a0c40e3bca00edc0f1349b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeechBubble
+  root: {fileID: 0}
   textBox: {fileID: 230362893}
-  bubbleImage: {fileID: 0}
   overworldTarget: {fileID: 0}
   battleTarget: {fileID: 0}
-  offset: {x: 0, y: 2, z: 0}
-  textSpeed: 0.03
-  displayTime: 2
+  worldOffset: {x: 0, y: 2, z: 0}
+  typeSpeed: 0.03
+  holdSeconds: 2
 --- !u!114 &230362896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1973,7 +1973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &642329076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4588,7 +4588,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 258880967}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4903,13 +4903,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a61d4e8a0c40e3bca00edc0f1349b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeechBubble
+  root: {fileID: 0}
   textBox: {fileID: 230362893}
-  bubbleImage: {fileID: 185587940}
   overworldTarget: {fileID: 762738419}
   battleTarget: {fileID: 2002757122}
-  offset: {x: 0, y: 2, z: 0}
-  textSpeed: 0.03
-  displayTime: 2
+  worldOffset: {x: 0, y: 2, z: 0}
+  typeSpeed: 0.03
+  holdSeconds: 2
 --- !u!1 &809037836
 GameObject:
   m_ObjectHideFlags: 0
