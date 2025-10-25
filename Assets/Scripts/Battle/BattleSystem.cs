@@ -28,7 +28,6 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.Setup();
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
-
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared.");
@@ -66,6 +65,17 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
+    IEnumerator PerformPlayerMove(){
+        var move = playerUnit.Pokemon.Moves[currentMove];
+    
+        // Force the compiler to use the property by explicitly casting to object first
+        string attackerName = (object)playerUnit.Pokemon.Base.Name as string;
+        string moveName = (object)move.Base.Name as string;
+
+        string message = $"{attackerName} used {moveName}";
+        yield return dialogBox.TypeDialog(message);
+    }
+
     private void Update(){
         if (state == BattleState.PlayerAction){
             HandleActionSelection();
@@ -87,67 +97,73 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateActionSelection(currentAction);
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentAction == 0){
                 //Fight
-                PlayerMove();
+                StartCoroutine(PlayerMove());
             }
             else if (currentAction == 1){
                 //Run
             }
         }
     }
-    void HandleMoveSelection(){
-        // Use the count of actual moves to define the upper limit
-        int maxMoves = playerUnit.Pokemon.Moves.Count - 1; 
-
-        if (Input.GetKeyDown(KeyCode.RightArrow)){
-            if(currentMove < maxMoves && currentMove % 2 == 0)
-                currentMove++;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-            if (currentMove > 0 && currentMove % 2 != 0)
-                currentMove--;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow)){
-            // Only allow moving down if index is 0 or 1 AND there are moves in the next row
-            if (currentMove < maxMoves - 1 && currentMove + 2 <= maxMoves)
-                currentMove += 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow)){
-            if (currentMove > 1)
-                currentMove -= 2;
-        }
-        
-        // Safety check: Clamp the index to prevent out-of-range errors
-        currentMove = Mathf.Clamp(currentMove, 0, maxMoves);
-
-        // Only update the selection if the Pokémon actually has moves
-        if (playerUnit.Pokemon.Moves.Count > 0)
-        {
-            dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
-        }
-    }
     // void HandleMoveSelection(){
+    //     // Use the count of actual moves to define the upper limit
+    //     int maxMoves = playerUnit.Pokemon.Moves.Count - 1; 
 
-    //     int maxMoves = playerUnit.Pokemon.Moves.Count - 1;
     //     if (Input.GetKeyDown(KeyCode.RightArrow)){
-    //         if(currentMove < playerUnit.Pokemon.Moves.Count - 1)
-    //             ++currentAction;
+    //         if(currentMove < maxMoves && currentMove % 2 == 0)
+    //             currentMove++;
     //     }
     //     else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-    //         if (currentMove > 0)
-    //             --currentMove;
+    //         if (currentMove > 0 && currentMove % 2 != 0)
+    //             currentMove--;
     //     }
     //     else if (Input.GetKeyDown(KeyCode.DownArrow)){
-    //         if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
+    //         // Only allow moving down if index is 0 or 1 AND there are moves in the next row
+    //         if (currentMove < maxMoves - 1 && currentMove + 2 <= maxMoves)
     //             currentMove += 2;
     //     }
     //     else if (Input.GetKeyDown(KeyCode.UpArrow)){
     //         if (currentMove > 1)
     //             currentMove -= 2;
     //     }
-    //     dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+        
+    //     // Safety check: Clamp the index to prevent out-of-range errors
+    //     currentMove = Mathf.Clamp(currentMove, 0, maxMoves);
+
+    //     // Only update the selection if the Pokémon actually has moves
+    //     if (playerUnit.Pokemon.Moves.Count > 0)
+    //     {
+    //         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+    //     }
     // }
+    void HandleMoveSelection(){
+
+        int maxMoves = playerUnit.Pokemon.Moves.Count - 1;
+        if (Input.GetKeyDown(KeyCode.RightArrow)){
+            if(currentMove < playerUnit.Pokemon.Moves.Count - 1)
+                ++currentMove;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+            if (currentMove > 0)
+                --currentMove;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)){
+            if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
+                currentMove += 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow)){
+            if (currentMove > 1)
+                currentMove -= 2;
+        }
+        dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+
+        if (Input.GetKeyDown(KeyCode.Space)){
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerMove());
+        }
+    }
 }

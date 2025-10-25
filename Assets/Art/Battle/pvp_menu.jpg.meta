@@ -402,12 +402,12 @@ TextureImporter:
       name: pvp_menu_13
       rect:
         serializedVersion: 2
-        x: 256
-        y: 2
-        width: 256
-        height: 240
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 184
+        y: 111
+        width: 160
+        height: 91
+      alignment: 9
+      pivot: {x: 0.49083462, y: 0.48689705}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
