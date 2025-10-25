@@ -89,7 +89,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (currentAction == 0){
                 //Fight
-                StartCoroutine(PlayerMove());
+                PlayerMove();
             }
             else if (currentAction == 1){
                 //Run
