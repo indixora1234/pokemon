@@ -1,12 +1,16 @@
 using UnityEngine;
 using Neocortex;
 
-public class AI : MonoBehaviour
+public class AITraining : MonoBehaviour
 {
     private NeocortexSmartAgent agent;
     public CombatTracker combatTracker;
     private AudioSource audioSource;
     private bool useVoice = false;
+
+    [Header("UI Reference")]
+    public SpeechBubble speechBubble; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +34,12 @@ public class AI : MonoBehaviour
         agent.OnChatResponseReceived.AddListener((response) =>
         {
             Debug.Log("AI Response Received: " + response.message);
+
+            if(speechBubble != null)
+            {
+                speechBubble.ShowText(response.message);
+                speechBubble.ClearAfterDelay(5f); //clears after 5 seconds
+            }
         });
 
         agent.OnAudioResponseReceived.AddListener((audioClip) =>
