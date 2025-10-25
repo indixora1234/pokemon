@@ -6,32 +6,32 @@ using System.Collections.Generic;
 
 public class PokemonBase : ScriptableObject
 {
-    [field: SerializeField] public string name {get; private set; }
+    [field: SerializeField] public string Name {get; private set; }
 
     [TextArea]
-    [field: SerializeField] public string description {get ; private set; }
+    [field: SerializeField] public string Description {get ; private set; }
 
-    [field: SerializeField] public Sprite frontSprite {get ; private set; }
-    [field: SerializeField] public Sprite backSprite {get ; private set; }
+    [field: SerializeField] public Sprite FrontSprite {get ; private set; }
+    [field: SerializeField] public Sprite BackSprite {get ; private set; }
 
-    [field: SerializeField] public PokemonType type1 {get ; private set; }
-    [field: SerializeField] public PokemonType type2 {get ; private set; }
+    [field: SerializeField] public PokemonType Type1 {get ; private set; }
+    [field: SerializeField] public PokemonType Type2 {get ; private set; }
 
     //Base Stats
-    [field: SerializeField] public int maxHp {get ; private set; }
-    [field: SerializeField] public int attack {get ; private set; }
-    [field: SerializeField] public int defense {get ; private set; }
-    [field: SerializeField] public int spAttack {get ; private set; }
-    [field: SerializeField] public int spDefense {get ; private set; }
-    [field: SerializeField] public int speed {get ; private set; }
+    [field: SerializeField] public int MaxHp {get ; private set; }
+    [field: SerializeField] public int Attack {get ; private set; }
+    [field: SerializeField] public int Defense {get ; private set; }
+    [field: SerializeField] public int SpAttack {get ; private set; }
+    [field: SerializeField] public int SpDefense {get ; private set; }
+    [field: SerializeField] public int Speed {get ; private set; }
 
-    [field: SerializeField] public List<LearnableMove> learnableMoves {get ; private set; }
+    [field: SerializeField] public List<LearnableMove> LearnableMoves {get ; private set; }
 }
 [System.Serializable]
 public class LearnableMove
 {
-    [field: SerializeField] public MoveBase moveBase {get ; private set; }
-    [field: SerializeField] public int level {get ; private set; }
+    [field: SerializeField] public MoveBase Base {get ; private set; }
+    [field: SerializeField] public int Level {get ; private set; }
 }
 
 public enum PokemonType

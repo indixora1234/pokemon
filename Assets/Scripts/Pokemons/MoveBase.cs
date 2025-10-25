@@ -5,13 +5,13 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Move", menuName = "Pokemon/Create new move")]
 public class MoveBase : ScriptableObject
 {
-    [field: SerializeField] public string name {get; private set; }
+    [field: SerializeField] public string Name {get; private set; }
 
     [TextArea]
-    [field: SerializeField] public string description {get ; private set; }
+    [field: SerializeField] public string Description {get ; private set; }
 
-    [field: SerializeField] public PokemonType type {get ; private set; }
-    [field: SerializeField] public int power {get ; private set; }
-    [field: SerializeField] public int accuracy {get ; private set; }
-    [field: SerializeField] public int pp {get ; private set; }
+    [field: SerializeField] public PokemonType Type {get ; private set; }
+    [field: SerializeField] public int Power {get ; private set; }
+    [field: SerializeField] public int Accuracy {get ; private set; }
+    [field: SerializeField] public int PP {get ; private set; }
 }
