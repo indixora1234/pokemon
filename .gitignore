@@ -35,3 +35,4 @@
 # Ignore all .DS_Store files anywhere in the project
 **/.[Dd][Ss]_[Ss]tore
 
+.DS_Store
