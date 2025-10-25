@@ -27,6 +27,7 @@ public class PokemonBase : ScriptableObject
 
     [field: SerializeField] public List<LearnableMove> LearnableMoves {get ; private set; }
 }
+
 [System.Serializable]
 public class LearnableMove
 {

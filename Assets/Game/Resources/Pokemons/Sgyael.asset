@@ -26,6 +26,6 @@ MonoBehaviour:
   <Speed>k__BackingField: 70
   <LearnableMoves>k__BackingField:
   - <Base>k__BackingField: {fileID: 11400000, guid: d7b06e729f307466a88f65f7e7252db4, type: 2}
-    <Level>k__BackingField: 2
+    <Level>k__BackingField: 3
   - <Base>k__BackingField: {fileID: 11400000, guid: 160680cded43f4d7cb9446d879153ab9, type: 2}
     <Level>k__BackingField: 5
