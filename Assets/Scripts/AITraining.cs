@@ -35,11 +35,23 @@ public class AITraining : MonoBehaviour
         {
             Debug.Log("AI Response Received: " + response.message);
 
-            if(speechBubble != null)
+            if (speechBubble != null)
             {
-                speechBubble.ShowText(response.message);
-                speechBubble.ClearAfterDelay(5f); //clears after 5 seconds
+                BattleSystem battleSystem = FindFirstObjectByType<BattleSystem>();
+                if (battleSystem != null && battleSystem.playerUnit != null)
+                {
+                    speechBubble.ShowSpeech(response.message, battleSystem.playerUnit.transform);
+                }
+                else
+                {
+                    // fallback: show above overworld player if not in battle
+                    Player player = FindFirstObjectByType<Player>();
+                    if (player != null)
+                        speechBubble.ShowSpeech(response.message, player.transform);
+                }
             }
+
+            
         });
 
         agent.OnAudioResponseReceived.AddListener((audioClip) =>
