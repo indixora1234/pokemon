@@ -11,7 +11,9 @@ public class BattleHud
     [field: SerializeField] public HPBar hpBar {get; private set; }
 
     public void SetData(Pokemon pokemon){
-        nameText.text = 
+        nameText.text = pokemon.Base.Name;
+        levelText.text = "Lvl" + pokemon.Level;
+        hpBar.SetHP((float) pokemon.HP / pokemon.MaxHp);
     }
 
 }

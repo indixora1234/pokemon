@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class Pokemon
 {
-    public PokemonBase Base {get; set;};
-    public int level {get; set;};
+    public PokemonBase Base {get; set;}
+    public int Level {get; set;}
 
     public int HP { get; set; }
 
@@ -13,13 +13,13 @@ public class Pokemon
 
     public Pokemon(PokemonBase pBase, int pLevel){
         Base = pBase;
-        level = pLevel;
-        HP = Base.MaxHp;
+        Level = pLevel;
+        HP = MaxHp;
 
         //Generate Moves
         Moves = new List<Move>();
         foreach(var move in Base.LearnableMoves){
-            if (move.Level <= level){
+            if (move.Level <= Level){
                 Moves.Add(new Move(move.Base));
             }
 
@@ -30,26 +30,26 @@ public class Pokemon
     }
 
     public int Attack {
-        get { return Mathf.FloorToInt((Base.Attack * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.Attack * Level)/100f) + 5;}
     }
 
     public int Defense {
-        get { return Mathf.FloorToInt((Base.Defense * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.Defense * Level)/100f) + 5;}
     }
 
     public int SpAttack {
-        get { return Mathf.FloorToInt((Base.SpAttack * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.SpAttack * Level)/100f) + 5;}
     }
 
     public int Speed {
-        get { return Mathf.FloorToInt((Base.Speed * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.Speed * Level)/100f) + 5;}
     }
 
     public int MaxHp {
-        get { return Mathf.FloorToInt((Base.MaxHp * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.MaxHp * Level)/100f) + 5;}
     }
 
     public int SpDefense {
-        get { return Mathf.FloorToInt((Base.SpDefense * level)/100f) + 5;}
+        get { return Mathf.FloorToInt((Base.SpDefense * Level)/100f) + 5;}
     }
 }
