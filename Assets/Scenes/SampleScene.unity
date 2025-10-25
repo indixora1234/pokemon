@@ -1973,7 +1973,7 @@ MonoBehaviour:
   enemyUnit: {fileID: 745219146}
   playerHud: {fileID: 1163143967}
   enemyHud: {fileID: 1367232284}
-  dialogBox: {fileID: 0}
+  dialogBox: {fileID: 1760274847}
 --- !u!1 &1070572076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd949e8f712d48ecb96c91f3c4fadb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleHud
-  <NameText>k__BackingField: {fileID: 1869818849}
+  <NameText>k__BackingField: {fileID: 1896209530}
   <LevelText>k__BackingField: {fileID: 1725876405}
   <HpBar>k__BackingField: {fileID: 1558039712}
 --- !u!1 &1260990320
@@ -3216,7 +3216,6 @@ RectTransform:
   m_SizeDelta: {x: 240.29, y: 144.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1869818847
---- !u!1 &1896209529
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3225,16 +3224,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869818848}
-  - component: {fileID: 1869818850}
-  - component: {fileID: 1869818849}
-  m_Layer: 5
-  m_Name: NameText
-  - component: {fileID: 1896209533}
-  - component: {fileID: 1896209532}
   - component: {fileID: 1896209531}
   - component: {fileID: 1896209530}
+  - component: {fileID: 1896209534}
   m_Layer: 0
-  m_Name: NeocortexAgent
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3260,6 +3254,44 @@ RectTransform:
   m_SizeDelta: {x: 160, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869818849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896209529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &1869818850
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896209529}
+  m_CullTransparentMesh: 1
+--- !u!1 &1896209529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896209533}
+  - component: {fileID: 1869818850}
+  - component: {fileID: 1869818849}
+  - component: {fileID: 1896209532}
+  m_Layer: 5
+  m_Name: NameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &1896209530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,16 +3326,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Name
---- !u!222 &1869818850
-CanvasRenderer:
-  m_GameObject: {fileID: 1896209529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d5db11d63cb4487a5241724f1ccccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI
-  combatTracker: {fileID: 778691045}
-  speechBubble: {fileID: 185587942}
 --- !u!82 &1896209531
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3311,8 +3333,6 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869818847}
-  m_CullTransparentMesh: 1
-  m_GameObject: {fileID: 1896209529}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -3447,6 +3467,14 @@ Transform:
   - {fileID: 778691044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!222 &1896209534
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869818847}
+  m_CullTransparentMesh: 1
 --- !u!1 &1954452729
 GameObject:
   m_ObjectHideFlags: 0
