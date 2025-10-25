@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 185587941}
   - component: {fileID: 185587940}
   - component: {fileID: 185587943}
+  - component: {fileID: 185587945}
   - component: {fileID: 185587944}
   m_Layer: 5
   m_Name: SpeechBubbleBackground
@@ -228,12 +229,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 797058626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53474.02, y: 18048.146}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 14, y: -8}
   m_SizeDelta: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 564.0124, y: 251.56427}
-  m_SizeDelta: {x: 1080, y: 1080}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &185587940
 MonoBehaviour:
@@ -248,14 +247,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0.77254903}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 065d8dee1626145eb87c1d1934b7b3f6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -305,6 +304,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 185587938}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &185587945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185587938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
@@ -340,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITraining
   combatTracker: {fileID: 659826201}
-  speechBubble: {fileID: 797058629}
+  speechBubble: {fileID: 0}
 --- !u!4 &192405804
 Transform:
   m_ObjectHideFlags: 0
@@ -384,15 +409,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230362891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 263.74997}
-  m_LocalScale: {x: 0.5275, y: 0.5275, z: 0.5275}
+  m_LocalPosition: {x: 0, y: 0, z: 263.7501}
+  m_LocalScale: {x: 0.52750003, y: 0.52750003, z: 0.52750003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 797058626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53474, y: 18357}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230362893
@@ -445,7 +470,7 @@ MonoBehaviour:
   m_fontSize: 28
   m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -506,13 +531,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a61d4e8a0c40e3bca00edc0f1349b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeechBubble
+  root: {fileID: 0}
   textBox: {fileID: 230362893}
-  bubbleImage: {fileID: 0}
   overworldTarget: {fileID: 0}
   battleTarget: {fileID: 0}
-  offset: {x: 0, y: 2, z: 0}
-  textSpeed: 0.03
-  displayTime: 2
+  worldOffset: {x: 0, y: 2, z: 0}
+  typeSpeed: 0.03
+  holdSeconds: 2
 --- !u!114 &230362896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +1201,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2343,7 +2368,7 @@ Canvas:
   m_GameObject: {fileID: 759225362}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 258880967}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2519,7 +2544,10 @@ GameObject:
   - component: {fileID: 797058626}
   - component: {fileID: 797058628}
   - component: {fileID: 797058627}
-  - component: {fileID: 797058629}
+  - component: {fileID: 797058631}
+  - component: {fileID: 797058630}
+  - component: {fileID: 797058632}
+  - component: {fileID: 797058633}
   m_Layer: 5
   m_Name: SpeechBubbleUI
   m_TagString: Untagged
@@ -2546,7 +2574,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797058627
 MonoBehaviour:
@@ -2555,7 +2583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797058625}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2647,7 +2675,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797058625}
   m_CullTransparentMesh: 1
---- !u!114 &797058629
+--- !u!114 &797058630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797058625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
+--- !u!114 &797058631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797058625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_Padding:
+    m_Left: 14
+    m_Right: 14
+    m_Top: 8
+    m_Bottom: 8
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &797058632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2659,13 +2727,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192a61d4e8a0c40e3bca00edc0f1349b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeechBubble
+  root: {fileID: 0}
+  textBox: {fileID: 0}
+  overworldTarget: {fileID: 0}
+  battleTarget: {fileID: 0}
+  worldOffset: {x: 0, y: 2, z: 0}
+  typeSpeed: 0.03
+  holdSeconds: 2
+--- !u!114 &797058633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797058625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192a61d4e8a0c40e3bca00edc0f1349b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpeechBubble
+  root: {fileID: 797058626}
   textBox: {fileID: 230362893}
-  bubbleImage: {fileID: 185587940}
   overworldTarget: {fileID: 762738419}
   battleTarget: {fileID: 2002757122}
-  offset: {x: 0, y: 2, z: 0}
-  textSpeed: 0.03
-  displayTime: 2
+  worldOffset: {x: 0, y: 2, z: 0}
+  typeSpeed: 0.03
+  holdSeconds: 2
 --- !u!1 &809037836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &989655746
 Transform:
   m_ObjectHideFlags: 0
