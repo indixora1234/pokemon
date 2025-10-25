@@ -35,21 +35,24 @@ public class AITraining : MonoBehaviour
         {
             Debug.Log("AI Response Received: " + response.message);
 
-            if (speechBubble != null)
+           if (speechBubble != null)
             {
                 BattleSystem battleSystem = FindFirstObjectByType<BattleSystem>();
-                if (battleSystem != null && battleSystem.playerUnit != null)
+
+                if (battleSystem != null && battleSystem.PlayerUnit != null)
                 {
-                    speechBubble.ShowSpeech(response.message, battleSystem.playerUnit.transform);
+                    // In battle
+                    speechBubble.ShowSpeech(response.message, battleSystem.PlayerUnit.transform);
                 }
                 else
                 {
-                    // fallback: show above overworld player if not in battle
-                    Player player = FindFirstObjectByType<Player>();
+                    // Overworld (fallback)
+                    var player = FindFirstObjectByType<PlayerController>();
                     if (player != null)
                         speechBubble.ShowSpeech(response.message, player.transform);
                 }
             }
+
 
             
         });
