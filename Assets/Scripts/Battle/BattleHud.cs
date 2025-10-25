@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 
-public class BattleHud
+public class BattleHud : MonoBehaviour
 {
-    [field: SerializeField] public Text nameText {get; private set; }
-    [field: SerializeField] public Text levelText {get; private set; }
-    [field: SerializeField] public HPBar hpBar {get; private set; }
+    [field: SerializeField] public Text NameText {get; private set; }
+    [field: SerializeField] public Text LevelText {get; private set; }
+    [field: SerializeField] public HPBar HpBar {get; private set; }
 
     public void SetData(Pokemon pokemon){
-        nameText.text = pokemon.Base.Name;
-        levelText.text = "Lvl" + pokemon.Level;
-        hpBar.SetHP((float) pokemon.HP / pokemon.MaxHp);
+        NameText.text = pokemon.Base.Name;
+        LevelText.text = "Lvl" + pokemon.Level;
+        HpBar.SetHP((float) pokemon.HP / pokemon.MaxHp);
     }
 
 }

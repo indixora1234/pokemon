@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
-    [field: SerializeField] public BattleUnit playerUnit {get; private set; }
-    [field: SerializeField] public BattleUnit enemyUnit {get; private set; }
+    [SerializeField] BattleUnit playerUnit;
+    [SerializeField] BattleUnit enemyUnit;
 
-    [field: SerializeField] public BattleHud playerHud {get; private set; }
-    [field: SerializeField] public BattleHud enemyHud {get; private set; }
+    [SerializeField] BattleHud playerHud;
+    [SerializeField] BattleHud enemyHud;
 
 
     private void Start(){
-        SetUpBattle();
+        SetupBattle();
     }
 
-    public void SetUpBattle(){
+    public void SetupBattle(){
         playerUnit.Setup();
-        playerHud.SetData(playerUnit.Pokemon);
+        enemyUnit.Setup();
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
     }

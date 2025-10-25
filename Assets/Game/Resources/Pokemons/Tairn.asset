@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9e7a0dde249451dbeb76820d290178, type: 3}
   m_Name: Tairn
   m_EditorClassIdentifier: Assembly-CSharp::PokemonBase
-  <name>k__BackingField: Tairn
-  <description>k__BackingField: 
-  <frontSprite>k__BackingField: {fileID: 2852736387752267822, guid: 5f9bb4c6a48e145ac85423e36ef98f43, type: 3}
-  <backSprite>k__BackingField: {fileID: 2852736387752267822, guid: 5f9bb4c6a48e145ac85423e36ef98f43, type: 3}
-  <type1>k__BackingField: 15
-  <type2>k__BackingField: 4
-  <maxHp>k__BackingField: 100
-  <attack>k__BackingField: 100
-  <defense>k__BackingField: 100
-  <spAttack>k__BackingField: 120
-  <spDefense>k__BackingField: 120
-  <speed>k__BackingField: 120
-  <learnableMoves>k__BackingField:
-  - <moveBase>k__BackingField: {fileID: 11400000, guid: 160680cded43f4d7cb9446d879153ab9, type: 2}
-    <level>k__BackingField: 3
-  - <moveBase>k__BackingField: {fileID: 11400000, guid: 6ca5871a1ac0e4c16a37336653ccf1ca, type: 2}
-    <level>k__BackingField: 10
-  - <moveBase>k__BackingField: {fileID: 11400000, guid: d7b06e729f307466a88f65f7e7252db4, type: 2}
-    <level>k__BackingField: 1
+  <Name>k__BackingField: Tairn
+  <Description>k__BackingField: 
+  <FrontSprite>k__BackingField: {fileID: 2852736387752267822, guid: c0a66bf78f6b24b4a8784bd8aadfa068, type: 3}
+  <BackSprite>k__BackingField: {fileID: 2852736387752267822, guid: c0a66bf78f6b24b4a8784bd8aadfa068, type: 3}
+  <Type1>k__BackingField: 15
+  <Type2>k__BackingField: 4
+  <MaxHp>k__BackingField: 100
+  <Attack>k__BackingField: 100
+  <Defense>k__BackingField: 100
+  <SpAttack>k__BackingField: 100
+  <SpDefense>k__BackingField: 100
+  <Speed>k__BackingField: 200
+  <LearnableMoves>k__BackingField:
+  - <Base>k__BackingField: {fileID: 11400000, guid: 6ca5871a1ac0e4c16a37336653ccf1ca, type: 2}
+    <Level>k__BackingField: 10
+  - <Base>k__BackingField: {fileID: 11400000, guid: d7b06e729f307466a88f65f7e7252db4, type: 2}
+    <Level>k__BackingField: 3
+  - <Base>k__BackingField: {fileID: 11400000, guid: 160680cded43f4d7cb9446d879153ab9, type: 2}
+    <Level>k__BackingField: 5
