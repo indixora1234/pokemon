@@ -8,6 +8,7 @@ public class BattleUnit : MonoBehaviour
     [SerializeField] PokemonBase _base ;
     [SerializeField] int level ; 
     [SerializeField] bool isPlayerUnit ; 
+    [field: SerializeField] public BattleHud Hud {get; private set;}
 
     public Pokemon Pokemon {get; set;}
     
@@ -20,6 +21,7 @@ public class BattleUnit : MonoBehaviour
         else
             GetComponent<Image>().sprite = Pokemon.Base.FrontSprite;
 
+        Hud.SetData(Pokemon);
         
     }
 }

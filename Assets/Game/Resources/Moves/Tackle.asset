@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc6d7396fff0420a87da2f8c3e88409, type: 3}
   m_Name: Tackle
   m_EditorClassIdentifier: Assembly-CSharp::MoveBase
-  <name>k__BackingField: Tackle
-  <description>k__BackingField: 
-  <type>k__BackingField: 1
-  <power>k__BackingField: 40
-  <accuracy>k__BackingField: 100
-  <pp>k__BackingField: 15
+  <Name>k__BackingField: Tackle
+  <Description>k__BackingField: 
+  <Type>k__BackingField: 1
+  <Power>k__BackingField: 10
+  <Accuracy>k__BackingField: 100
+  <PP>k__BackingField: 20

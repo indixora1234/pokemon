@@ -7,12 +7,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed= 5f ;
     [SerializeField] private LayerMask solidObjectsLayer;
 
+    [SerializeField] private float encounterRate = 0.1f; // 10% chance per step
+    private GameManager gameManager;
+
     public bool isMoving;
     private Vector2 input;
     private Animator animator;
 
     private void Awake(){
         animator = GetComponent<Animator>();
+        gameManager = FindFirstObjectByType<GameManager>(); 
+        if (gameManager == null) Debug.LogError("GameManager not found in scene!");
     }
 
     private void Update(){
@@ -52,6 +57,8 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+
+        CheckForRandomEncounter();
     }
 
     //Handles collisions 
@@ -61,5 +68,16 @@ public class PlayerController : MonoBehaviour
             return false;
         }
         return true;
+    }
+    private void CheckForRandomEncounter()
+    {
+        // Only check for encounter if the player is in the 'long grass' or walkable area
+        // For simplicity, we check a general chance every step
+        if (Random.value < encounterRate) // Random.value is between 0.0 and 1.0
+        {
+            Debug.Log("WILD POKEMON ENCOUNTERED!");
+            // Tell the GameManager to start the battle sequence
+            gameManager.StartBattleSequence(); 
+        }
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dc6d7396fff0420a87da2f8c3e88409, type: 3}
-  m_Name: Electric Shock
+  m_Name: FIre
   m_EditorClassIdentifier: Assembly-CSharp::MoveBase
-  <Name>k__BackingField: Electric
+  <Name>k__BackingField: Fire
   <Description>k__BackingField: 
-  <Type>k__BackingField: 4
-  <Power>k__BackingField: 50
-  <Accuracy>k__BackingField: 60
-  <PP>k__BackingField: 10
+  <Type>k__BackingField: 2
+  <Power>k__BackingField: 30
+  <Accuracy>k__BackingField: 80
+  <PP>k__BackingField: 12
