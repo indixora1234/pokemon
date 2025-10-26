@@ -74,11 +74,18 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator OnBattleOver(){
         yield return new WaitForSeconds(1f);
-        if (playerUnit.Pokemon.HP <= 0){
+        if (playerUnit.Pokemon.HP <= 0)
+        {
             yield return dialogBox.TypeDialog($"Battle Over. {enemyUnit.Pokemon.Base.Name} won.");
         }
-        else{
+        else
+        {
             yield return dialogBox.TypeDialog($"Battle Over. {playerUnit.Pokemon.Base.Name} won.");
+        }
+        SpeechBubble speechBubble = FindFirstObjectByType<SpeechBubble>();
+        if (speechBubble != null)
+        {
+            speechBubble.ExitBattle(playerUnit.transform);
         }
     }
 
@@ -157,6 +164,8 @@ public class BattleSystem : MonoBehaviour
                 ActionSelection();
             }
         }
+        AITraining ai = FindFirstObjectByType<AITraining>();
+        if (ai != null) ai.AnalyzeCombatData();
     }
 
     IEnumerator PlayerDodgePhase(){
