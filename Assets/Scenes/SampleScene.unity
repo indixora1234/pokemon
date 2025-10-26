@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 115852714}
   - component: {fileID: 115852713}
   - component: {fileID: 115852715}
+  - component: {fileID: 115852716}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: AudioSourceTag
@@ -646,6 +647,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a52753480c46467ab9b593836b9f674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Audio
+--- !u!81 &115852716
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115852712}
+  m_Enabled: 1
 --- !u!1 &185587938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1093,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258880966}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1620,7 +1629,6 @@ Transform:
   - {fileID: 648315371}
   - {fileID: 2062024254}
   - {fileID: 762738419}
-  - {fileID: 989655746}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -2918,6 +2926,8 @@ MonoBehaviour:
   startSceneObject: {fileID: 306241350}
   gameWorldObject: {fileID: 426462607}
   battleSystemObject: {fileID: 989655745}
+  mainGameCamera: {fileID: 519420031}
+  battleCamera: {fileID: 258880967}
 --- !u!4 &642329077
 Transform:
   m_ObjectHideFlags: 0
@@ -5719,6 +5729,7 @@ MonoBehaviour:
   solidObjectsLayer:
     serializedVersion: 2
     m_Bits: 0
+  encounterRate: 0.1
   isMoving: 0
 --- !u!212 &762738418
 SpriteRenderer:
@@ -6201,7 +6212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &989655746
 Transform:
   m_ObjectHideFlags: 0
@@ -6217,7 +6228,7 @@ Transform:
   m_Children:
   - {fileID: 258880970}
   - {fileID: 2015433311}
-  m_Father: {fileID: 426462609}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &989655747
 MonoBehaviour:
@@ -9188,6 +9199,7 @@ SceneRoots:
   - {fileID: 642329077}
   - {fileID: 619394802}
   - {fileID: 306241351}
+  - {fileID: 989655746}
   - {fileID: 426462609}
   - {fileID: 571442341}
   - {fileID: 759225366}

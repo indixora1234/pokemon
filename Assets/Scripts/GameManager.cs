@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
     // Drag your containers here in the Inspector
     [SerializeField] GameObject startSceneObject;
     [SerializeField] GameObject gameWorldObject; // Your Grid
-    [SerializeField] GameObject battleSystemObject; // The BattleSystem parent object
+    [SerializeField] GameObject battleSystemObject; 
+
+    [SerializeField] Camera mainGameCamera; 
+    [SerializeField] Camera battleCamera;
     
     // Use Awake to set the starting view
     private void Awake()
@@ -38,15 +41,28 @@ public class GameManager : MonoBehaviour
         // 3. Keep the BattleSystem DISABLED until combat starts
     }
     
-    /* * EXAMPLE of how you would start a battle (Future Code)
-    public void StartBattle()
+    public void StartBattleSequence()
     {
-        gameWorldObject.SetActive(false); // Hide the Overworld
-        battleSystemObject.SetActive(true); // Show the Battle UI
+        // DISABLE the Overworld (Grid)
+        if (gameWorldObject != null)
+            gameWorldObject.SetActive(false);
+        // DISABLE the Main Camera
+        if (mainGameCamera != null)
+            mainGameCamera.enabled = false; 
+
+        // ENABLE the Battle System UI and Logic
+        if (battleSystemObject != null)
+            battleSystemObject.SetActive(true);
+            
+        // ENABLE the Battle Camera
+        if (battleCamera != null)
+            battleCamera.enabled = true;
         
-        // This is where you would swap the Main Camera for the BattleCamera
-        MainCamera.enabled = false;
-        BattleCamera.enabled = true;
+        // 5. Start the battle logic
+        BattleSystem battleSystem = battleSystemObject.GetComponentInChildren<BattleSystem>();
+        if (battleSystem != null)
+        {
+            StartCoroutine(battleSystem.SetupBattle());
+        }
     }
-    */
 }

@@ -20,11 +20,6 @@ public class BattleSystem : MonoBehaviour
 
     public enum Direction {Up, Down, Left, Right, None}
 
-    private void Start(){
-        StartCoroutine(SetupBattle());
-        
-    }
-
     public IEnumerator SetupBattle(){
         playerUnit.Setup();
         enemyUnit.Setup();
