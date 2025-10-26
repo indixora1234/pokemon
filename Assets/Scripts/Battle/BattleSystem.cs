@@ -25,8 +25,6 @@ public class BattleSystem : MonoBehaviour
             Debug.Log($"✅ Found SpeechBubble: {bubble.gameObject.name}");
         else
             Debug.LogWarning("⚠️ No SpeechBubble found in the scene!");
-
-        StartCoroutine(SetupBattle());
     }
     public enum Direction {Up, Down, Left, Right, None}
 
