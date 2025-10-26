@@ -63,16 +63,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
-<<<<<<< HEAD
         // continue normal battle flow
-        PlayerAction();
-    }
-
-
-    void PlayerAction(){
-        state = BattleState.PlayerAction;
-=======
         ActionSelection();
     }
 
@@ -93,7 +84,6 @@ public class BattleSystem : MonoBehaviour
 
     void ActionSelection(){
         state = BattleState.ActionSelection;
->>>>>>> 197d54e530c094aaeb01eec61dee45efa277191b
         StartCoroutine(dialogBox.TypeDialog("Choose an action"));
         Debug.Log("Moves available: " + playerUnit.Pokemon.Moves.Count);
         dialogBox.EnableActionSelector(true);
