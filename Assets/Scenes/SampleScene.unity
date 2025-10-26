@@ -1600,7 +1600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &426462608
 Grid:
   m_ObjectHideFlags: 0
@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000007f0554a4cd05947cc70260378716bc16e534aeb38387603391e1ee58c9f7637723cc9ae8
+  m_ApplyToSortingLayers: 000000007f0554a4cd05947cc70260378716bc16e534aeb38387603391e1ee58c9f7637723cc9ae8691de13b973e2f238d3b727a
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3022,7 +3022,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1492050321
+  m_SortingLayerID: 1004608873
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -34056,7 +34056,7 @@ MonoBehaviour:
   moveSpeed: 20
   solidObjectsLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   encounterRate: 0.1
   isMoving: 0
 --- !u!212 &762738418
@@ -34103,7 +34103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 2003040201
+  m_SortingLayerID: 590298775
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7152930139536384079, guid: 61a9cfd7aa22e4cb18e5bfc943ef3fe8, type: 3}
@@ -36790,7 +36790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8754905540680145715, guid: c452620aa3f304f0fb01a47cee0e3c09, type: 3}
+  m_Sprite: {fileID: 8765297898444631108, guid: cffc65845b3d94b36b70c728a8f199e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37167,7 +37167,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -392508381
+  m_SortingLayerID: 2054306701
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
