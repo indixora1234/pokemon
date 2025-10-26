@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameWorldObject; // Your Grid
     [SerializeField] GameObject battleSystemObject; 
 
+    [SerializeField] private Audio audioManager; 
+    [SerializeField] private AudioClip battleMusicClip; 
+
     [SerializeField] Camera mainGameCamera; 
     [SerializeField] Camera battleCamera;
     
@@ -23,6 +26,9 @@ public class GameManager : MonoBehaviour
             
         if (battleSystemObject != null)
             battleSystemObject.SetActive(false); // Hide Battle UI
+
+        audioManager = FindFirstObjectByType<Audio>();
+        if (audioManager == null) Debug.LogError("AudioManager not found!");
     }
 
     // Public method called by the StartGameButton
@@ -38,31 +44,27 @@ public class GameManager : MonoBehaviour
         if (gameWorldObject != null)
             gameWorldObject.SetActive(true);
         
-        // 3. Keep the BattleSystem DISABLED until combat starts
     }
     
     public void StartBattleSequence()
     {
+        float battleMusicStartTime = 40f;
         // DISABLE the Overworld (Grid)
         if (gameWorldObject != null)
             gameWorldObject.SetActive(false);
-        // DISABLE the Main Camera
-        if (mainGameCamera != null)
-            mainGameCamera.enabled = false; 
-
-        // ENABLE the Battle System UI and Logic
         if (battleSystemObject != null)
             battleSystemObject.SetActive(true);
-            
-        // ENABLE the Battle Camera
-        if (battleCamera != null)
-            battleCamera.enabled = true;
         
         // 5. Start the battle logic
         BattleSystem battleSystem = battleSystemObject.GetComponentInChildren<BattleSystem>();
         if (battleSystem != null)
         {
             StartCoroutine(battleSystem.SetupBattle());
+        }
+
+        if (audioManager != null && battleMusicClip != null)
+        {
+            audioManager.PlayMusic(battleMusicClip, battleMusicStartTime);
         }
     }
 }
