@@ -64,15 +64,13 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-<<<<<<< HEAD
         // continue normal battle flow
         PlayerAction();
     }
 
 
     void PlayerAction(){
-        state = BattleState.PlayerAction;
-=======
+        state = BattleState.ActionSelection;
         ActionSelection();
     }
 
@@ -83,17 +81,23 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator OnBattleOver(){
         yield return new WaitForSeconds(1f);
-        if (playerUnit.Pokemon.HP <= 0){
+        if (playerUnit.Pokemon.HP <= 0)
+        {
             yield return dialogBox.TypeDialog($"Battle Over. {enemyUnit.Pokemon.Base.Name} won.");
         }
-        else{
+        else
+        {
             yield return dialogBox.TypeDialog($"Battle Over. {playerUnit.Pokemon.Base.Name} won.");
+        }
+        SpeechBubble speechBubble = FindFirstObjectByType<SpeechBubble>();
+        if (speechBubble != null)
+        {
+            speechBubble.ExitBattle(playerUnit.transform);
         }
     }
 
     void ActionSelection(){
         state = BattleState.ActionSelection;
->>>>>>> 197d54e530c094aaeb01eec61dee45efa277191b
         StartCoroutine(dialogBox.TypeDialog("Choose an action"));
         Debug.Log("Moves available: " + playerUnit.Pokemon.Moves.Count);
         dialogBox.EnableActionSelector(true);
@@ -167,6 +171,8 @@ public class BattleSystem : MonoBehaviour
                 ActionSelection();
             }
         }
+        AITraining ai = FindFirstObjectByType<AITraining>();
+        if (ai != null) ai.AnalyzeCombatData();
     }
 
     IEnumerator PlayerDodgePhase(){
