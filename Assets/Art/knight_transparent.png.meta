@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: d4ecc59870a164956b94747c6ec7db30
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4848346948561881544
+    second: knight_transparent_0
+  - first:
+      213: 618084716842371518
+    second: knight_transparent_1
+  - first:
+      213: 4657469888430134411
+    second: knight_transparent_2
+  - first:
+      213: 8416803666642737868
+    second: knight_transparent_3
+  - first:
+      213: 6537481638525658743
+    second: knight_transparent_4
+  - first:
+      213: 774541334313037216
+    second: knight_transparent_5
+  - first:
+      213: 774198041579632495
+    second: knight_transparent_6
+  - first:
+      213: -3220926750853208663
+    second: knight_transparent_7
+  - first:
+      213: 8125548441528075673
+    second: knight_transparent_8
+  - first:
+      213: -5496832947285682480
+    second: knight_transparent_9
+  - first:
+      213: 3238459048231344495
+    second: knight_transparent_10
+  - first:
+      213: 151670019584617658
+    second: knight_transparent_11
+  - first:
+      213: 2491382394506922348
+    second: knight_transparent_12
+  - first:
+      213: -9188689892440576654
+    second: knight_transparent_13
+  - first:
+      213: 3462071284657062701
+    second: knight_transparent_14
+  - first:
+      213: 1314327805261949427
+    second: knight_transparent_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: knight_transparent_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 781
+        width: 110
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836be1f432637bcb0800000000000000
+      internalID: -4848346948561881544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 781
+        width: 111
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9cc7476c0e39800800000000000000
+      internalID: 618084716842371518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_2
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 781
+        width: 112
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b84d4fbef28a2a040800000000000000
+      internalID: 4657469888430134411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_3
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 781
+        width: 113
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca1276375e7ec470800000000000000
+      internalID: 8416803666642737868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 522
+        width: 110
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776e5f5c9ecc9ba50800000000000000
+      internalID: 6537481638525658743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_5
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 522
+        width: 111
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ade5976d39bfba00800000000000000
+      internalID: 774541334313037216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_6
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 522
+        width: 107
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67382654018eba00800000000000000
+      internalID: 774198041579632495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_7
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 522
+        width: 106
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a567df6f28fc43d0800000000000000
+      internalID: -3220926750853208663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 269
+        width: 106
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 995828ea14fb3c070800000000000000
+      internalID: 8125548441528075673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_9
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 269
+        width: 109
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d69f53de8357b3b0800000000000000
+      internalID: -5496832947285682480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_10
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 269
+        width: 106
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f699a75a85151fc20800000000000000
+      internalID: 3238459048231344495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_11
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 269
+        width: 105
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abcea684417da1200800000000000000
+      internalID: 151670019584617658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_12
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 14
+        width: 110
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c694f30861b239220800000000000000
+      internalID: 2491382394506922348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_13
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 13
+        width: 109
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d6bd10a373b7080800000000000000
+      internalID: -9188689892440576654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_14
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 14
+        width: 109
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2380159d7fbb0030800000000000000
+      internalID: 3462071284657062701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_transparent_15
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 14
+        width: 109
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9ae0fdc2e6d3210800000000000000
+      internalID: 1314327805261949427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      knight_transparent_0: -4848346948561881544
+      knight_transparent_1: 618084716842371518
+      knight_transparent_10: 3238459048231344495
+      knight_transparent_11: 151670019584617658
+      knight_transparent_12: 2491382394506922348
+      knight_transparent_13: -9188689892440576654
+      knight_transparent_14: 3462071284657062701
+      knight_transparent_15: 1314327805261949427
+      knight_transparent_2: 4657469888430134411
+      knight_transparent_3: 8416803666642737868
+      knight_transparent_4: 6537481638525658743
+      knight_transparent_5: 774541334313037216
+      knight_transparent_6: 774198041579632495
+      knight_transparent_7: -3220926750853208663
+      knight_transparent_8: 8125548441528075673
+      knight_transparent_9: -5496832947285682480
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

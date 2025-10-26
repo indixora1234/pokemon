@@ -6,8 +6,8 @@ public enum BattleState {Start, ActionSelection, MoveSelection, PerformMove, Bus
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleUnit enemyUnit;
+    [field: SerializeField] public BattleUnit playerUnit {get; private set;}
+    [field: SerializeField] public BattleUnit enemyUnit {get; private set;}
     public BattleUnit PlayerUnit => playerUnit;
     [SerializeField] BattleDialogBox dialogBox ;
 
@@ -249,9 +249,33 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 1){
                 //Run
+                StartCoroutine(RunAction());
             }
         }
     }
+
+    IEnumerator RunAction(){
+        state = BattleState.Busy; // Set state to Busy so no other input is processed
+    
+        // 1. Display the escape attempt message
+        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} is trying to run!");
+        yield return new WaitForSeconds(1f);
+
+        // 2. Escape Logic (Always successful for simplicity now)
+        // In a full game, you'd calculate a Run success chance here.
+        
+        yield return dialogBox.TypeDialog("Got away safely!");
+        yield return new WaitForSeconds(1f);
+
+        // 3. Signal the GameManager to swap the scene back to the overworld
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            // all the custom method to exit battle
+            gameManager.EndBattleSequence(); 
+        }
+    }
+
     void HandleMoveSelection(){
 
         int maxMoves = playerUnit.Pokemon.Moves.Count - 1;

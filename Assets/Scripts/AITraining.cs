@@ -1,6 +1,7 @@
 using UnityEngine;
 using Neocortex;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AITraining : MonoBehaviour
 {
@@ -94,12 +95,95 @@ public class AITraining : MonoBehaviour
 
     }
 
+
+// public void AnalyzeCombatData(bool useVoice = false)
+// {
+//     if (combatTracker == null || agent == null) return;
+    
+//     // Check if the battle system is active
+//     BattleSystem battleSystem = FindFirstObjectByType<BattleSystem>();
+//     if (battleSystem == null || battleSystem.PlayerUnit == null) 
+//     {
+//         Debug.LogWarning("Cannot analyze combat: Not currently in an active battle.");
+//         return;
+//     }
+
+//     // 1. Fetch Move Lists and Turn Count
+    
+//     // Retrieve Player's moves (for Attack suggestions)
+//     List<Move> playerMoves = battleSystem.playerUnit.Pokemon.Moves;
+//     List<string> playerMoveNames = new List<string>();
+//     foreach (var move in playerMoves)
+//     {
+//         playerMoveNames.Add(move.Base.Name); 
+//     }
+//     string playerMoveListString = string.Join(", ", playerMoveNames);
+
+//     // Retrieve Enemy's moves (for Defensive context)
+//     List<Move> enemyMoves = battleSystem.enemyUnit.Pokemon.Moves;
+//     List<string> enemyMoveNames = new List<string>();
+//     foreach (var move in enemyMoves)
+//     {
+//         enemyMoveNames.Add(move.Base.Name); 
+//     }
+//     string enemyMoveListString = string.Join(", ", enemyMoveNames);
+    
+//     // Get the turn count from the CombatTracker
+//     int totalTurns = combatTracker.totalTurns;
+    
+    
+//     // 2. Determine Turn-Specific Advice (Attack or Dodge)
+//     string turnSpecificTip;
+//     string playerMoveConstraint = "You MUST choose a Player Move from this list: [" + playerMoveListString + "]. ";
+
+
+//     // Suggest Attack on Odd/First Turns (Player's Initiative)
+//     // totalTurns == 0 is the start; odd numbers (1, 3, 5...) are subsequent player turns
+//     if (totalTurns == 0 || totalTurns % 2 != 0) 
+//     {
+//         // 🛑 FORCE ATTACK SUGGESTION
+//         turnSpecificTip = "Your advice MUST be: 'Use [Player Move Name]'. " + 
+//                           playerMoveConstraint + 
+//                           "DO NOT suggest a dodge direction.";
+//     }
+//     // Suggest Dodge on Even Turns (Enemy's Initiative/Player Defense)
+//     else // Even numbers (2, 4, 6...)
+//     {
+//         // 🛑 FORCE DODGE SUGGESTION
+//         string dodgeHistoryTip = (totalTurns == 2) // Check if this is the first dodge scenario
+//             ? "Give a random dodge suggestion [Left, right, up, or down]."
+//             : "Base your defensive tip on the opponent's historical attack direction data.";
+        
+//         turnSpecificTip = "Your advice MUST be: 'Dodge [LEFT/RIGHT/UP/DOWN]'. " + 
+//                           "DO NOT suggest an attack move. " + 
+//                           dodgeHistoryTip;
+//     }
+
+//     // 3. Final Prompt Assembly
+//     string prompt = "You are a concise battle coach. Analyze the data and give ONE short, tactical tip for the next action. " +
+//                     "The opponent can use these moves: [" + enemyMoveListString + "]. " +
+//                     turnSpecificTip +
+//                     "Keep your entire response under 20 words.\n\n" + combatData;
+    
+//     Debug.Log("Combat Analysis Report:\n" + combatData);
+    
+//     // 4. Send to AI
+//     if (useVoice)
+//     {
+//         agent.TextToAudio(prompt);
+//     }
+//     else
+//     {
+//         agent.TextToText(prompt);
+//     }
+// }
+
     public void AnalyzeCombatData(bool useVoice = false)
     {
         if (combatTracker == null || agent == null) return;
         string combatData = combatTracker.GenerateCombatReport();
 
-        string prompt = "You are a concise battle coach. Analyze the data and give ONE short tip for the next turn. " + "Be tactical, under 20 words.\n\n" + combatData;
+        string prompt = "You are a concise battle coach. Analyze the data and give ONE short tip for the next turn. " + "The first turn is attack options are (Growl, Electric,Tackle)" + "Second turn is dodge suggest a dodge direction (left,right,up,down)" + "When the turn is odd suggest a ATTACK move ONLY"+ "when turn is even suggest a DODGE move ONLY"+ "Be tactical, under 20 words.\n\n" + "after the playerUnit attacks" + combatData;
         Debug.Log("Combat Analysis Report:\n" + combatData);
         if (useVoice)
         {

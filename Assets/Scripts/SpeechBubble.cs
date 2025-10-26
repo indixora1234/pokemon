@@ -116,6 +116,7 @@ public class SpeechBubble : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(TypeDialogRoutine(message, target));
+        
     }
 
     private IEnumerator TypeDialogRoutine(string message, Transform target)

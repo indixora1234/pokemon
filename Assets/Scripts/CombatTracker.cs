@@ -43,7 +43,11 @@ public class CombatTracker : MonoBehaviour
     //opponent Attack Directions
     private int opponentRightAttacks, opponentLeftAttacks, opponentUpperAttacks, opponentLowerAttacks;
 
-    private int totalTurns = 0;
+    public int totalTurns = 0;
+
+    public int TotalTurns(){
+        return totalTurns;
+    }
 
 //Player Move Tracking
     public void RecordPlayerMoves(string action)

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Audio audioManager; 
     [SerializeField] private AudioClip battleMusicClip; 
+    [SerializeField] private AudioClip overworldMusicClip;
 
     [SerializeField] Camera mainGameCamera; 
     [SerializeField] Camera battleCamera;
@@ -68,6 +69,14 @@ public class GameManager : MonoBehaviour
             gameWorldObject.SetActive(false);
         if (battleSystemObject != null)
             battleSystemObject.SetActive(true);
+
+        // 3. DISABLE the Main Camera
+        if (mainGameCamera != null)
+            mainGameCamera.enabled = false; 
+
+        // 4. ENABLE the Battle Camera
+        if (battleCamera != null)
+            battleCamera.enabled = true;
         
         // 5. Start the battle logic
         BattleSystem battleSystem = battleSystemObject.GetComponentInChildren<BattleSystem>();
@@ -80,5 +89,27 @@ public class GameManager : MonoBehaviour
         {
             audioManager.PlayMusic(battleMusicClip, battleMusicStartTime);
         }
+    }
+
+    public void EndBattleSequence()
+    {
+        // 1. DISABLE the Battle System UI and Logic
+        if (battleSystemObject != null)
+            battleSystemObject.SetActive(false);
+
+        // 2. ENABLE the Overworld (Grid)
+        if (gameWorldObject != null)
+            gameWorldObject.SetActive(true);
+
+        // 3. ENABLE the Main Camera (for overworld view)
+        if (mainGameCamera != null)
+            mainGameCamera.enabled = true; 
+
+        // 4. DISABLE the Battle Camera
+        if (battleCamera != null)
+            battleCamera.enabled = false;
+            
+        //Swap music back (assuming you added the audio swap)
+        audioManager.PlayMusic(overworldMusicClip);
     }
 }
