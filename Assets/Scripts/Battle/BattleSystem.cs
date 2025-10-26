@@ -63,14 +63,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
         // continue normal battle flow
-        PlayerAction();
-    }
-
-
-    void PlayerAction(){
-        state = BattleState.ActionSelection;
         ActionSelection();
     }
 
