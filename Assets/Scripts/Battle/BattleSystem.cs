@@ -19,24 +19,57 @@ public class BattleSystem : MonoBehaviour
     int currentAction;
     int currentMove;
 
-    private void Start(){
+    void Start()
+    {
+        var bubble = FindFirstObjectByType<SpeechBubble>();
+        if (bubble != null)
+            Debug.Log($"✅ Found SpeechBubble: {bubble.gameObject.name}");
+        else
+            Debug.LogWarning("⚠️ No SpeechBubble found in the scene!");
+
         StartCoroutine(SetupBattle());
-        
     }
 
-    public IEnumerator SetupBattle(){
+
+    public IEnumerator SetupBattle()
+    {
         playerUnit.Setup();
         enemyUnit.Setup();
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
+        // Dialogue when enemy appears
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared.");
+
+        AITraining trainer = FindFirstObjectByType<AITraining>();
+        if (trainer != null)
+        {
+            trainer.StopOverworldDialogue();
+        }
+
+        // ✅ Add the speech bubble here
+        SpeechBubble speechBubble = FindFirstObjectByType<SpeechBubble>();
+        if (speechBubble != null)
+        {
+            // tell it we’re in battle mode
+            speechBubble.EnterBattle(playerUnit.transform);
+
+            // display some battle intro dialogue above the player unit
+            speechBubble.ShowSpeech("I'm ready to fight!", playerUnit.transform);
+            Debug.Log("💬 SpeechBubble triggered from BattleSystem.");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ No SpeechBubble found in the scene!");
+        }
 
         yield return new WaitForSeconds(1f);
 
+        // continue normal battle flow
         PlayerAction();
     }
+
 
     void PlayerAction(){
         state = BattleState.PlayerAction;

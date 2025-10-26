@@ -69,6 +69,12 @@ public class AITraining : MonoBehaviour
         Debug.Log("AI and CombatTracker successfully initialized. Press T for Text,  V for Voice");
         StartCoroutine(OverworldDialogueLoop());
         AnalyzeCombatData();        
+        // Start the overworld chat loop
+        if (overworldLoop == null)
+        {
+            overworldLoop = StartCoroutine(OverworldDialogueLoop());
+        }
+
     }
 
     void Update()
@@ -108,34 +114,37 @@ public class AITraining : MonoBehaviour
         // For example, if the player dodges a lot, the AI could focus on predicting dodges
     }
 
+private Coroutine overworldLoop;
+
     private IEnumerator OverworldDialogueLoop()
     {
         while (true)
         {
-            // Wait between 10–20 seconds before each new message
+            // Wait between 10–20 seconds between each message
             yield return new WaitForSeconds(Random.Range(10f, 20f));
 
             if (agent == null) continue;
 
-            // 🧠 Prompt for overworld chatter
+            // Only speak in overworld (not battle)
+            BattleSystem battle = FindFirstObjectByType<BattleSystem>();
+            if (battle != null && battle.isActiveAndEnabled)
+                continue;
+
+            // Friendly Pokémon-style prompt
             string prompt =
-                "You are a friendly Pokémon mentor who gives short, interesting comments to the player " +
-                "while they explore the overworld. " +
-                "Say something motivational, funny, or informative about Pokémon or training. " +
+                "You are a cheerful Pokémon mentor. Say something short, fun, or motivational about Pokémon or battling. " +
                 "Keep it under 20 words and natural.";
 
             Debug.Log("🌿 Sending overworld prompt to AI...");
 
+            // Voice or text depending on current mode
             if (useVoice)
-            {
                 agent.TextToAudio(prompt);
-            }
             else
-            {
                 agent.TextToText(prompt);
-            }
         }
     }
+
     
     public void PauseOverworldDialogue()
     {
@@ -148,6 +157,16 @@ public class AITraining : MonoBehaviour
         StartCoroutine(OverworldDialogueLoop());
         Debug.Log("🌿 Overworld AI dialogue resumed (battle ended).");
     }
+
+    public void StopOverworldDialogue()
+    {
+        if (overworldLoop != null)
+        {
+            StopCoroutine(overworldLoop);
+            overworldLoop = null;
+        }
+    }
+
 
 
 
