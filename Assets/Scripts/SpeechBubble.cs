@@ -93,10 +93,15 @@ public class SpeechBubble : MonoBehaviour
         if (!target || !canvas || !root) return;
 
         var cam = IsInBattle && battleCam ? battleCam : mainCam;
-        Vector3 screen = cam ? cam.WorldToScreenPoint(target.position + worldOffset)
-                             : (Vector3)RectTransformUtility.WorldToScreenPoint(null, target.position + worldOffset);
 
-        // convert screen → canvas local (Overlay uses null camera)
+        // 🔥 auto-update the canvas camera if needed
+        if (canvas.worldCamera != cam)
+            canvas.worldCamera = cam;
+
+        Vector3 screen = cam ? cam.WorldToScreenPoint(target.position + worldOffset)
+                            : (Vector3)RectTransformUtility.WorldToScreenPoint(null, target.position + worldOffset);
+
+        // convert screen → canvas local
         RectTransform canvasRect = (RectTransform)canvas.transform;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 canvasRect,
@@ -107,4 +112,5 @@ public class SpeechBubble : MonoBehaviour
             root.anchoredPosition = local;
         }
     }
+
 }

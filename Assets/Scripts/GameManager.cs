@@ -43,6 +43,20 @@ public class GameManager : MonoBehaviour
         // 2. ENABLE the Main Game World (Grid, Player, etc.)
         if (gameWorldObject != null)
             gameWorldObject.SetActive(true);
+
+        // 3. Re-enable overworld SpeechBubble
+        SpeechBubble speechBubble = FindFirstObjectByType<SpeechBubble>();
+        if (speechBubble != null)
+        {
+            // Find the player object
+            var player = FindFirstObjectByType<PlayerController>();
+            if (player != null)
+            {
+                // Switch back to overworld mode and set target
+                speechBubble.ExitBattle(player.transform);
+                Debug.Log("💬 SpeechBubble returned to overworld mode.");
+            }
+}
         
     }
     
